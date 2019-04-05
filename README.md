@@ -1,4 +1,4 @@
-#### Social Determinants of Health Challenge
+# Social Determinants of Health Challenge
 
 https://www.ahrq.gov/cpi/about/profile/index.html 
 
