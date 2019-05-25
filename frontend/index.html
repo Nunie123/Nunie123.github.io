@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>American Health Mapper</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="js/state_data.js"></script>
+    <script src="js/county_data.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <div class="container-fluid outer-container">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">American Health Mapper</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#">Mapper Tool</a>
+                        <a class="nav-item nav-link" href="#">Community Maps</a>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link" href="#">Log In</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="row">
+            <aside class="col-sm-3">
+                <div>Current Attributes:</div>
+                <ul id="current-map-attributes"></ul>
+                <div><span id="attribute1"></span><span id="attribute1_color"></span></div>
+                <div><span id="attribute2"></span><span id="attribute2_color"></span></div>
+                <div>Select a State-Level Attribute:</div>
+                <ul id="state-map-attributes"></ul>
+                <div>Select a County-Level Attribute:</div>
+                <ul id="county-map-attributes"></ul>
+            </aside>
+            <div class="container col-sm-9" id="data-content">
+                <nav class="row navbar navbar-light bg-light" id="data-nav">
+                    <form class="form-inline">
+                        <button class="btn btn-success" type="button">Map</button>
+                        <button class="btn btn-outline-success" type="button">Table</button>
+                        <button class="btn btn-outline-success" type="button">Statistics</button>
+                        <button class="btn btn-outline-success" type="button">Customize</button>
+                    </form>
+                    <form class="form-inline my-2 my-sm-0">
+                        <button type="button" data-toggle="modal" data-target="#import-modal"
+                            class="btn btn-outline-info my-2 my-sm-0">Import Dataset</button>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Download
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Map as PNG</a>
+                                <a class="dropdown-item" href="#">Map as PDF</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Data as CSV</a>
+                                <a class="dropdown-item" href="#">Data as Excel</a>
+                                <a class="dropdown-item" href="#">Data as GeoJSON</a>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-info my-2 my-sm-0">Save</button>
+                    </form>
+                </nav>
+                <map class="row" id="map"></map>
+            </div>
+            <div id="import-modal" class="modal bd-example-modal-lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Upload Data</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="import-modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Select file to import:</label>
+                                    <input type="file" class="form-control-file" id="file-import" accept=".csv">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="upload-file-button" type="button" class="btn btn-primary">Upload</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>The footer</footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="js/map.js"></script>
+    <script src="js/side_panel.js"></script>
+    <script src="js/papaparse.min.js"></script>
+    <script src="js/upload_data.js"></script>
+</body>
+
+
+</html>
