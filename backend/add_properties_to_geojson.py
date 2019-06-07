@@ -6,6 +6,9 @@ def add_csv_data_to_state_geojson(source_geojson, source_csv, save_as):
     be the column header. Duplicate properties will be over-written.
     Properties for unrecognized states will be ignored. The first 
     column in the csv must indicate the state.
+    example execution:
+    > from add_properties_to_geojson import add_csv_data_to_state_geojson as add
+    > add('us_census_state_2018_geo.json', 'preloaded_state_data.csv', 'preloaded_state_data.json')
     '''
     with open(source_geojson, 'r') as f:
         try:
