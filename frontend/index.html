@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <script src="js/state_data.js"></script>
+    <script src="js/preloaded_state_data.js"></script>
     <script src="js/county_data.js"></script>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -90,16 +90,17 @@
                             </button>
                         </div>
                         <div class="modal-body" id="import-modal-body">
-                            <form>
+                            <form id="modal-upload-starting-form">
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Select file to import:</label>
                                     <input type="file" class="form-control-file" id="file-import" accept=".csv">
                                 </div>
                             </form>
+                            <div id="import-modal-field-mapper"></div>
                         </div>
                         <div class="modal-footer">
                             <button id="upload-file-button" type="button" class="btn btn-primary">Upload</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button id="close-modal-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>

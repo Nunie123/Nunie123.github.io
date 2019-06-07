@@ -19,7 +19,8 @@ var state = {
     stateData: stateGeo,       //currently loaded from state_data.js.js
     countyData: countyGeo,      //currently loaded from county_data.js
     info: {},
-    legend: null
+    legend: null,
+    filePendingUpload: null
 };
 state.map = createMap();
 state.info = addInfoBoxToMap(state.map);

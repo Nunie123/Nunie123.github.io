@@ -105,9 +105,9 @@ aside {
     font-weight: bold;
     margin-top: 10px;
 }
-.sample-table{
-    overflow: scroll;
+.data-table th{
+    min-width: 200px;
 }
-#import-modal-body{
+.table-wrapper{
     overflow: scroll;
 }
